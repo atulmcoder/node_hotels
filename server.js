@@ -1,12 +1,15 @@
-const espress = require('express');
-const app = espress();
-const PORT = 3000;
+const express = require('express');
+const app = express();
+require('dotenv').config();
+const PORT = process.env.PORT ||5000;
 const db = require('./db');
 const Menu = require('./models/menu');
 const Person = require('./models/person');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const cors = require("cors");
+app.use(cors());
 
 
 app.get('/', async (req,res)=>{
